@@ -1,0 +1,20 @@
+name: GitHub Secrets Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Access Secret
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          echo "GitHub Secret accessed successfully."
